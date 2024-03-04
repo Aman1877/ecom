@@ -25,9 +25,9 @@ const ProductCard = () => {
   };
 
   return (
-    <div className="w-full grid grid-cols-4">
+    <div className="w-full grid grid-cols-4 mt-20">
       {products.map((product: Product, index: number) => (
-        <div className="flex flex-col m-2 p-2 bg-[whitesmoke] rounded-lg">
+        <div key={product.id} className="flex flex-col m-2 p-2 bg-[whitesmoke] rounded-lg">
           <div
             onClick={() => {
               handleProductDetail(product.id);
@@ -80,7 +80,7 @@ const ProductCard = () => {
                 className="px-5 py-2.5"
                 text="Go to bag"
                 onClick={() => {
-                  handleAddToCart(product);
+                  navigate("/cart");
                 }}
               />
             ) : (

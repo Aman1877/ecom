@@ -5,9 +5,11 @@ import Button from "../../shared/components/Button";
 import Loader from "../../shared/components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const ProductDetail:React.FC = () => {
+const ProductDetail: React.FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { singleProduct, status, error } = useSelector(
     (state: any) => state.product
@@ -29,10 +31,12 @@ const ProductDetail:React.FC = () => {
       {status === "succeeded" && (
         <div>
           <Layout />
-          <div className="flex flex-col md:flex-row gap-2 mt-10 h-screen">
+          <div className="flex flex-col md:flex-row gap-2 mt-24">
             <div className="md:w-1/2 flex justify-center">
               <img
-                className="h-auto max-w-sm rounded-lg"
+                height={200}
+                width={400}
+                className=""
                 src={singleProduct.image}
                 alt={singleProduct.title}
               />
@@ -72,7 +76,7 @@ const ProductDetail:React.FC = () => {
                     className="px-10 py-2.5"
                     text="Go to bag"
                     onClick={() => {
-                      console.log("first");
+                      navigate("/cart");
                     }}
                   />
                 ) : (
